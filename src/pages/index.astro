@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/Layout.astro'
+import moment from 'moment'
 
 const response = await fetch('https://json.extendsclass.com/bin/046f024ee1d1')
   .then((reply) => reply.json())
@@ -39,27 +40,22 @@ interface DataTypes {
           <tbody>
             {
               response.data.map((item: DataTypes) => {
-                let date = new Date(item.lastWonUTC)
-                let time = date.toLocaleTimeString('en-US', {
-                  hour12: false,
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })
+                let name = item.sellerName
+                let percentage = item.ratingPercentage + '%'
+                let rating = item.ratingCount.toLocaleString()
+                let lastWon = moment.utc(item.lastWonUTC).format('M/D/YY HH:mm')
+                let timePeriod = moment.duration(item.winDurationSeconds, 'seconds').humanize()
+                let timePeriodTooltip = moment.utc(item.lastWonUTC).format('DD MMM YYYY HH:mm')
 
                 return (
                   <tr>
-                    <td>{item.sellerName}</td>
-                    <td>{item.ratingPercentage}%</td>
-                    <td>{item.ratingCount.toLocaleString()}</td>
-                    <td>
-                      {date.toLocaleDateString('en-US', {
-                        month: 'numeric',
-                        day: 'numeric',
-                        year: '2-digit',
-                      })}{' '}
-                      {time}
+                    <td>{name}</td>
+                    <td>{percentage}</td>
+                    <td>{rating}</td>
+                    <td>{lastWon}</td>
+                    <td data-time-period={timePeriodTooltip} title={timePeriodTooltip}>
+                      {timePeriod}
                     </td>
-                    <td>{Math.floor(item.winDurationSeconds / 60)}</td>
                   </tr>
                 )
               })
@@ -68,22 +64,16 @@ interface DataTypes {
         </table>
       </div>
 
-      <div class="flex items-center justify-between p-4">
-        <button
-          class="rounded-md border border-blue-400 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-500"
-          type="button"
-        >
-          Previous
-        </button>
+      <div class="pagination">
+        <button type="button">Previous</button>
 
-        <div></div>
+        <div class="pagination-numbers">
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+        </div>
 
-        <button
-          class="rounded-lg border border-blue-400 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-500"
-          type="button"
-        >
-          Next
-        </button>
+        <button type="button">Next</button>
       </div>
     </div>
   </div>
