@@ -74,17 +74,17 @@ tr > td:not(:first-child) {
   align-items: center;
   justify-content: space-between;
   padding: theme('padding.4');
+}
 
-  button[type='button'] {
-    padding: theme('spacing.3') theme('spacing.4');
-    font-size: theme('fontSize.sm');
-    font-weight: theme('fontWeight.semibold');
-    line-height: theme('fontSize.sm[0]');
-    color: theme('colors.blue.500');
-    background-color: theme('colors.blue.50');
-    border: 1px solid theme('colors.blue.400');
-    border-radius: theme('borderRadius.md');
-  }
+.pagination-button {
+  padding: theme('spacing.3') theme('spacing.4');
+  font-size: theme('fontSize.sm');
+  font-weight: theme('fontWeight.semibold');
+  line-height: theme('fontSize.sm[0]');
+  color: theme('colors.blue.500');
+  background-color: theme('colors.blue.50');
+  border: 1px solid theme('colors.blue.400');
+  border-radius: theme('borderRadius.md');
 }
 
 .pagination-numbers {
