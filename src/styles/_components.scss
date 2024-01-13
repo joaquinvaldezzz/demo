@@ -1,0 +1,40 @@
+@import 'tailwindcss/components';
+
+.table-container {
+  max-width: 640px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid theme('colors.gray.300');
+  border-radius: theme('borderRadius.xl');
+  box-shadow: theme('boxShadow.lg');
+}
+
+.table-wrapper {
+  position: relative;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 640px;
+  table-layout: auto;
+}
+
+th,
+td {
+  padding: 0.25rem;
+  border: 1px solid #fff;
+}
+
+th {
+  font-weight: 400;
+  background-color: theme('colors.blue.50');
+}
+
+td {
+  font-weight: 500;
+}
+
+tr > td:not(:first-child) {
+  text-align: center;
+}

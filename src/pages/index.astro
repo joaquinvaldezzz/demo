@@ -1,0 +1,90 @@
+---
+import Layout from '~/layouts/Layout.astro'
+
+const response = await fetch('https://json.extendsclass.com/bin/046f024ee1d1')
+  .then((reply) => reply.json())
+  .then((data) => data)
+  .catch((error) => console.log(error))
+
+interface DataTypes {
+  sellerId: string
+  sellerName: string
+  winRatePercentage: number
+  hasFba: boolean
+  ratingPercentage: number
+  ratingCount: number
+  country: number
+  lastWonUTC: number
+  winDurationSeconds: number
+}
+---
+
+<Layout title="Demo Test">
+  <div class="container mt-4">
+    <div class="table-container">
+      <h1 class="bg-gray-300 py-3 text-center font-bold">BuyBox Statistics</h1>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Rating</th>
+              <th>Review</th>
+              <th>Last Won</th>
+              <th>Time Period</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {
+              response.data.map((item: DataTypes) => {
+                let date = new Date(item.lastWonUTC)
+                let time = date.toLocaleTimeString('en-US', {
+                  hour12: false,
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })
+
+                return (
+                  <tr>
+                    <td>{item.sellerName}</td>
+                    <td>{item.ratingPercentage}%</td>
+                    <td>{item.ratingCount.toLocaleString()}</td>
+                    <td>
+                      {date.toLocaleDateString('en-US', {
+                        month: 'numeric',
+                        day: 'numeric',
+                        year: '2-digit',
+                      })}{' '}
+                      {time}
+                    </td>
+                    <td>{Math.floor(item.winDurationSeconds / 60)}</td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex items-center justify-between p-4">
+        <button
+          class="rounded-md border border-blue-400 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-500"
+          type="button"
+        >
+          Previous
+        </button>
+
+        <div></div>
+
+        <button
+          class="rounded-lg border border-blue-400 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-500"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</Layout>

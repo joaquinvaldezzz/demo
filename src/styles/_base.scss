@@ -1,0 +1,15 @@
+/*! purgecss start ignore */
+@import 'tailwindcss/base';
+
+/*! purgecss end ignore */
+
+@import 'variables';
+
+@layer base {
+  body {
+    min-width: 320px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: theme('colors.gray.100');
+  }
+}
