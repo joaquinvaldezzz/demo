@@ -37,7 +37,7 @@ table {
 
 th,
 td {
-  padding: 0.25rem;
+  padding: theme('spacing.1');
   border: 1px solid #fff;
 }
 
@@ -64,17 +64,18 @@ tr > td:not(:first-child) {
     left: 100%;
     z-index: 9999;
     min-width: max-content;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
+    padding: theme('spacing.1') theme('spacing.3');
+    font-size: theme('fontSize.sm');
+    line-height: theme('fontSize.sm[0]');
     visibility: hidden;
     content: attr(data-time-period);
-    background-color: #fff;
+    background-color: theme('colors.white');
     border-radius: 9999px;
     opacity: 0;
     transition:
       visibility,
       opacity,
-      300ms ease-in-out;
+      theme('transitionDuration.150') theme('transitionTimingFunction.in-out');
     transform: translateY(-50%);
   }
 
@@ -109,7 +110,8 @@ tr > td:not(:first-child) {
   background-color: theme('colors.blue.50');
   border: 1px solid theme('colors.blue.400');
   border-radius: theme('borderRadius.md');
-  transition: background-color 300ms ease-in-out;
+  transition: background-color theme('transitionDuration.150')
+    theme('transitionTimingFunction.in-out');
 
   &:hover {
     background-color: theme('colors.blue.100');

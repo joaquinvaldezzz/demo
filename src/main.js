@@ -1,4 +1,5 @@
 import DataTable from 'datatables.net-dt'
+import $ from 'jquery'
 import moment from 'moment'
 import './styles/main.scss'
 
@@ -41,6 +42,13 @@ const dataTable = new DataTable(table, {
   ],
   data: response.data, // Use the data from the API response
   pageLength: 5, // Show 5 rows per page
+
+  // Add a title attribute to the 5th column, which will be used as a tooltip
+  createdRow(row, data) {
+    $(row)
+      .find('td:last-child')
+      .attr('title', moment.utc(data.lastWonUTC).format('DD MMM YYYY HH:mm'))
+  },
 
   // Disabled some features that are not needed
   info: false,
