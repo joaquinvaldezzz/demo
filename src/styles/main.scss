@@ -8,6 +8,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/*! purgecss start ignore */
 .table-container {
   max-width: 640px;
   margin: 0 auto;
@@ -114,3 +115,5 @@ tr > td:not(:first-child) {
     background-color: theme('colors.blue.100');
   }
 }
+
+/*! purgecss end ignore */
