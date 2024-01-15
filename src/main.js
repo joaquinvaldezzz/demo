@@ -1,5 +1,5 @@
-import DataTable from 'datatables.net-dt'
 import $ from 'jquery'
+import DataTable from 'datatables.net-dt'
 import moment from 'moment'
 import './styles/main.scss'
 
