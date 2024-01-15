@@ -1,6 +1,6 @@
 # Demo Test by John Joaquin Valdez
 
-This demo uses Astro and PostCSS plugins such as Tailwind CSS, Autoprefixer, and PurgeCSS.
+This demo uses Vite and PostCSS plugins such as Tailwind CSS, Autoprefixer, and PurgeCSS.
 
 ## Getting Started
 
