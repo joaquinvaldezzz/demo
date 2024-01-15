@@ -1,7 +1,6 @@
 {
-  "name": "cta-static",
+  "name": "demo",
   "version": "0.0.1",
-  "type": "module",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
@@ -9,6 +8,24 @@
     "lint": "eslint --ext .js",
     "lint:styles": "stylelint --fix 'src/styles/**/*.scss'",
     "preview": "vite preview"
+  },
+  "browserslist": {
+    "development": [
+      "> 0.5%"
+    ],
+    "production": [
+      ">= 1%",
+      "last 1 major version",
+      "not dead",
+      "Chrome >= 45",
+      "Firefox >= 38",
+      "Edge >= 12",
+      "Explorer >= 10",
+      "iOS >= 9",
+      "Safari >= 9",
+      "Android >= 4.4",
+      "Opera >= 30"
+    ]
   },
   "dependencies": {
     "moment": "^2.30.1"
