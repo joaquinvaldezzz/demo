@@ -1,3 +1,5 @@
+/* stylelint-disable selector-class-pattern */
+
 /*! purgecss start ignore */
 @import 'tailwindcss/base';
 
@@ -6,113 +8,109 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer components {
-  .table-container {
-    max-width: 640px;
-    margin: 0 auto;
-    overflow: hidden;
-    border: 1px solid theme('colors.gray.300');
-    border-radius: theme('borderRadius.xl');
-    box-shadow: theme('boxShadow.lg');
+.table-container {
+  max-width: 640px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid theme('colors.gray.300');
+  border-radius: theme('borderRadius.xl');
+  box-shadow: theme('boxShadow.lg');
+}
+
+.table-title {
+  padding-top: theme('padding.3');
+  padding-bottom: theme('padding.3');
+  font-weight: theme('fontWeight.bold');
+  text-align: center;
+  background-color: theme('colors.gray.300');
+}
+
+.dataTables_wrapper {
+  overflow-x: auto;
+}
+
+table {
+  min-width: theme('maxWidth.screen-sm');
+  table-layout: auto;
+}
+
+th,
+td {
+  padding: 0.25rem;
+  border: 1px solid #fff;
+}
+
+th {
+  font-weight: 400;
+  cursor: pointer;
+  background-color: theme('colors.blue.50');
+}
+
+td {
+  font-weight: 500;
+}
+
+tr > td:not(:first-child) {
+  text-align: center;
+}
+
+.tooltip {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    z-index: 9999;
+    min-width: max-content;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    visibility: hidden;
+    content: attr(data-time-period);
+    background-color: #fff;
+    border-radius: 9999px;
+    opacity: 0;
+    transition:
+      visibility,
+      opacity,
+      300ms ease-in-out;
+    transform: translateY(-50%);
   }
 
-  .table-wrapper {
-    position: relative;
-    overflow-x: auto;
+  &:hover::after {
+    visibility: visible;
+    opacity: 1;
   }
+}
 
-  table {
-    width: 100%;
-    min-width: 640px;
-    table-layout: auto;
-  }
+.dataTables_paginate {
+  display: flex;
+  gap: theme('gap.2');
+  align-items: center;
+  justify-content: space-between;
+  padding: theme('padding.4');
+  background-color: theme('colors.white');
 
-  th,
-  td {
-    padding: 0.25rem;
-    border: 1px solid #fff;
-  }
-
-  th {
-    font-weight: 400;
-    background-color: theme('colors.blue.50');
-  }
-
-  td {
-    font-weight: 500;
-  }
-
-  tr > td:not(:first-child) {
-    text-align: center;
-  }
-
-  .tooltip {
-    position: relative;
-
-    &::after {
-      position: absolute;
-      top: 50%;
-      left: 100%;
-      z-index: 9999;
-      min-width: max-content;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.875rem;
-      visibility: hidden;
-      content: attr(data-time-period);
-      background-color: #fff;
-      border-radius: 9999px;
-      opacity: 0;
-      transition:
-        visibility,
-        opacity,
-        300ms ease-in-out;
-      transform: translateY(-50%);
-    }
-
-    &:hover::after {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
-  .pagination {
+  > span {
     display: flex;
     gap: theme('gap.2');
     align-items: center;
-    justify-content: space-between;
-    padding: theme('padding.4');
-    background-color: theme('colors.white');
   }
+}
 
-  .pagination-button {
-    padding: theme('spacing.3') theme('spacing.4');
-    font-size: theme('fontSize.sm');
-    font-weight: theme('fontWeight.semibold');
-    line-height: theme('fontSize.sm[0]');
-    color: theme('colors.blue.500');
-    background-color: theme('colors.blue.50');
-    border: 1px solid theme('colors.blue.400');
-    border-radius: theme('borderRadius.md');
-  }
+.paginate_button {
+  padding: theme('spacing.3') theme('spacing.4');
+  font-size: theme('fontSize.sm');
+  font-weight: theme('fontWeight.semibold');
+  line-height: theme('fontSize.sm[0]');
+  color: theme('colors.blue.500');
+  cursor: pointer;
+  background-color: theme('colors.blue.50');
+  border: 1px solid theme('colors.blue.400');
+  border-radius: theme('borderRadius.md');
+  transition: background-color 300ms ease-in-out;
 
-  .pagination-numbers {
-    display: flex;
-    gap: theme('gap.2');
-    align-items: center;
-    height: theme('height.full');
-
-    > span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: theme('spacing.3') theme('spacing.4');
-      font-size: theme('fontSize.sm');
-      font-weight: theme('fontWeight.semibold');
-      line-height: theme('fontSize.sm[0]');
-      color: theme('colors.blue.500');
-      background-color: theme('colors.blue.50');
-      border: 1px solid theme('colors.blue.400');
-      border-radius: theme('borderRadius.md');
-    }
+  &:hover {
+    background-color: theme('colors.blue.100');
   }
 }
