@@ -6,6 +6,7 @@ export default {
     open: true,
   },
   build: {
+    target: 'es2022',
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name][extname]',
