@@ -1,4 +1,4 @@
-# Demo Test by John Joaquin Valdez
+# Demo Test
 
 This demo uses Vite and PostCSS plugins such as Tailwind CSS, Autoprefixer, and PurgeCSS.
 
